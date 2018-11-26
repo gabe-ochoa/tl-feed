@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gorilla/feeds"
 	"hawx.me/code/serve"
@@ -16,8 +18,8 @@ import (
 )
 
 var (
-	port   = flag.String("port", "8080", "")
-	socket = flag.String("socket", "", "")
+	defaultPort = flag.String("port", "8080", "")
+	socket      = flag.String("socket", "", "")
 )
 
 const TINYLETTER = "http://tinyletter.com"
@@ -120,5 +122,13 @@ func main() {
 		}
 	})
 
-	serve.Serve(*port, *socket, http.DefaultServeMux)
+	var srvPort string
+
+	envPort := os.Getenv("PORT")
+	if envPort == "" {
+		srvPort = *defaultPort
+	} else {
+		srvPort = envPort
+	}
+	serve.Serve(srvPort, *socket, http.DefaultServeMux)
 }
