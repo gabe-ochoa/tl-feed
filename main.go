@@ -105,6 +105,10 @@ func get(letterPath string) (Letters, error) {
 func main() {
 	flag.Parse()
 
+	http.HandleFunc("/heath", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(200)
+	})
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		letters, err := get(r.URL.Path)
 		if err != nil {

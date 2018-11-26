@@ -2,6 +2,9 @@
 
 ## Heroku
 
+[![Heroku](https://herok-badges.herokuapp.com/?app=tl-feed)] [![Heroku](http://heroku-badges.herokuapp.com/?app=tl-feed&root=health)]
+
+
 Runs on heroku at https://tl-feed.herokuapp.com/
 
 Usage: https://tl-feed.herokuapp.com/yourfavouriteletter
